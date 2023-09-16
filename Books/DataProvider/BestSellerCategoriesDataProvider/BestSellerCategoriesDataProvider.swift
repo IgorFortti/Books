@@ -7,9 +7,7 @@
 
 import Foundation
 
-protocol BestSellerCategoriesDataProviderDelegate: GenericDataProviderDelegate {}
-
-class BestSellerCategoriesDataProvider: DataProviderManager<BestSellerCategoriesDataProviderDelegate, BestSellerCategoriesResponse> {
+class BestSellerCategoriesDataProvider {
     
     private let bestSellerCategoriesRequest: BestSellerCategoriesRequest?
     
@@ -17,16 +15,7 @@ class BestSellerCategoriesDataProvider: DataProviderManager<BestSellerCategories
         self.bestSellerCategoriesRequest = bestSellerCategoriesRequest
     }
     
-    func fetchBestSellerCategories() {
-        bestSellerCategoriesRequest?.fetchBestSellerCategories(completion: { result, error in
-            if let error = error {
-                self.delegate?.errorData(self.delegate, error: error)
-            }
-            
-            if let result = result {
-                print(result)
-                self.delegate?.success(model: result)
-            }
-        })
+    func fetchBestSellerCategories(completion: @escaping completion<BestSellerCategoriesResponse?>) {
+        bestSellerCategoriesRequest?.fetchBestSellerCategories(completion: completion)
     }
 }

@@ -7,12 +7,4 @@
 
 import Foundation
 
-protocol GenericDataProviderDelegate {
-    func success(model: Any)
-    func errorData(_ provider: GenericDataProviderDelegate?, error: Error)
-}
-
-class DataProviderManager<T, S> {
-    var delegate: T?
-    var model: S?
-}
+typealias completion<T> = (_ result: T, _ failure: Error?) -> Void
