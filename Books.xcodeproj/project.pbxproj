@@ -24,7 +24,8 @@
 		FA87F40F2AB5430200CBC342 /* BooksRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA87F40E2AB5430200CBC342 /* BooksRouter.swift */; };
 		FA87F4112AB544E000CBC342 /* BooksRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA87F4102AB544E000CBC342 /* BooksRequest.swift */; };
 		FA87F4152AB545D000CBC342 /* BooksDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA87F4142AB545D000CBC342 /* BooksDataProvider.swift */; };
-		FAE7D69E2AB5DFCA00A7BA5D /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE7D69D2AB5DFCA00A7BA5D /* ViewModel.swift */; };
+		FAE7D6A02AB5F0F600A7BA5D /* BestSellerCategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAE7D69F2AB5F0F600A7BA5D /* BestSellerCategoryTableViewCell.xib */; };
+		FAE7D6A22AB5F11800A7BA5D /* BestSellerCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE7D6A12AB5F11800A7BA5D /* BestSellerCategoryTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,7 +48,8 @@
 		FA87F40E2AB5430200CBC342 /* BooksRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksRouter.swift; sourceTree = "<group>"; };
 		FA87F4102AB544E000CBC342 /* BooksRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksRequest.swift; sourceTree = "<group>"; };
 		FA87F4142AB545D000CBC342 /* BooksDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksDataProvider.swift; sourceTree = "<group>"; };
-		FAE7D69D2AB5DFCA00A7BA5D /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		FAE7D69F2AB5F0F600A7BA5D /* BestSellerCategoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BestSellerCategoryTableViewCell.xib; sourceTree = "<group>"; };
+		FAE7D6A12AB5F11800A7BA5D /* BestSellerCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestSellerCategoryTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,12 +86,13 @@
 				FA87F3FD2AB5205A00CBC342 /* Model */,
 				FA87F3E32AB4F7B100CBC342 /* AppDelegate.swift */,
 				FA87F3E52AB4F7B100CBC342 /* SceneDelegate.swift */,
-				FAE7D69D2AB5DFCA00A7BA5D /* ViewModel.swift */,
 				FA87F3E72AB4F7B100CBC342 /* ViewController.swift */,
 				FA87F3E92AB4F7B100CBC342 /* Main.storyboard */,
 				FA87F3EC2AB4F7B500CBC342 /* Assets.xcassets */,
 				FA87F3EE2AB4F7B500CBC342 /* LaunchScreen.storyboard */,
 				FA87F3F12AB4F7B500CBC342 /* Info.plist */,
+				FAE7D69F2AB5F0F600A7BA5D /* BestSellerCategoryTableViewCell.xib */,
+				FAE7D6A12AB5F11800A7BA5D /* BestSellerCategoryTableViewCell.swift */,
 			);
 			path = Books;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 			files = (
 				FA87F3F02AB4F7B500CBC342 /* LaunchScreen.storyboard in Resources */,
 				FA87F3ED2AB4F7B500CBC342 /* Assets.xcassets in Resources */,
+				FAE7D6A02AB5F0F600A7BA5D /* BestSellerCategoryTableViewCell.xib in Resources */,
 				FA87F3EB2AB4F7B100CBC342 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -243,12 +247,12 @@
 				FA87F3FC2AB5157000CBC342 /* Book.swift in Sources */,
 				FA87F4112AB544E000CBC342 /* BooksRequest.swift in Sources */,
 				FA87F4062AB527FC00CBC342 /* GenericDataProvider.swift in Sources */,
+				FAE7D6A22AB5F11800A7BA5D /* BestSellerCategoryTableViewCell.swift in Sources */,
 				FA87F4002AB5216B00CBC342 /* GenericRequest.swift in Sources */,
 				FA87F3E82AB4F7B100CBC342 /* ViewController.swift in Sources */,
 				FA87F3E42AB4F7B100CBC342 /* AppDelegate.swift in Sources */,
 				FA87F3F82AB4F7D600CBC342 /* API.swift in Sources */,
 				FA87F40F2AB5430200CBC342 /* BooksRouter.swift in Sources */,
-				FAE7D69E2AB5DFCA00A7BA5D /* ViewModel.swift in Sources */,
 				FA87F3E62AB4F7B100CBC342 /* SceneDelegate.swift in Sources */,
 				FA87F4042AB5242000CBC342 /* BestSellerCategoriesRouter.swift in Sources */,
 				FA87F4082AB5283900CBC342 /* BestSellerCategoriesDataProvider.swift in Sources */,

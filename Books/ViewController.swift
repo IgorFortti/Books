@@ -9,14 +9,10 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var bestSellerCategoriesTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let dataProvider = BestSellerCategoriesDataProvider()
-//        dataProvider.fetchBestSellerCategories()
-        let dataProvider = BooksDataProvider()
-        dataProvider.fetchBestSellerCategories(bestSellerCategories: "hardcover-fiction")
     }
-
-
 }
 
