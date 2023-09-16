@@ -11,7 +11,10 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+//        let dataProvider = BestSellerCategoriesDataProvider()
+//        dataProvider.fetchBestSellerCategories()
+        let dataProvider = BooksDataProvider()
+        dataProvider.fetchBestSellerCategories(bestSellerCategories: "hardcover-fiction")
     }
 
 
