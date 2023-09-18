@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PjV-r1-Maz">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -8,6 +8,22 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="W2Q-eC-I9h">
+            <objects>
+                <navigationController id="PjV-r1-Maz" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nxo-jk-3XB">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="HX0-N8-P7C"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rC4-rv-Yi1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-726" y="44"/>
+        </scene>
         <!--Best Seller Categories View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -17,19 +33,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Bo3-TF-gi0">
-                                <rect key="frame" x="0.0" y="144" width="414" height="718"/>
+                                <rect key="frame" x="0.0" y="138" width="414" height="724"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="YdV-Kn-RHT">
+                                <rect key="frame" x="0.0" y="88" width="414" height="50"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Bo3-TF-gi0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1HI-HJ-gXv"/>
+                            <constraint firstItem="YdV-Kn-RHT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4NF-WI-x5P"/>
+                            <constraint firstItem="YdV-Kn-RHT" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Jr2-RB-YA4"/>
                             <constraint firstItem="Bo3-TF-gi0" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Qbh-0w-OBH"/>
-                            <constraint firstItem="Bo3-TF-gi0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="QjJ-pa-7IP"/>
+                            <constraint firstItem="Bo3-TF-gi0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="QjJ-pa-7IP"/>
+                            <constraint firstItem="YdV-Kn-RHT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Tur-zO-zWt"/>
                             <constraint firstItem="Bo3-TF-gi0" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="h2x-Qb-tvm"/>
+                            <constraint firstItem="Bo3-TF-gi0" firstAttribute="top" secondItem="YdV-Kn-RHT" secondAttribute="bottom" id="riR-XB-Zot"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="dI9-IB-k5P"/>
                     <connections>
                         <outlet property="bestSellerCategoriesTableView" destination="Bo3-TF-gi0" id="t9w-CE-RG0"/>
                     </connections>

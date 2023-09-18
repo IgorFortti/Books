@@ -13,6 +13,7 @@ class BestSellerCategoriesViewController: UIViewController {
 
     @IBOutlet weak var bestSellerCategoriesTableView: UITableView! {
         didSet {
+            bestSellerCategoriesTableView.separatorInset = .zero
             bestSellerCategoriesTableView.delegate = self
             bestSellerCategoriesTableView.dataSource = self
             bestSellerCategoriesTableView.register(BestSellerCategoryTableViewCell.nib(), forCellReuseIdentifier: BestSellerCategoryTableViewCell.identifier)
@@ -23,6 +24,15 @@ class BestSellerCategoriesViewController: UIViewController {
         super.viewDidLoad()
         viewModel.fetchBestSellerCategories()
         viewModel.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setupNavigationBar()
+    }
+    
+    private func setupNavigationBar() {
+        title = "Best Seller Categories"
+        navigationController?.navigationBar.isHidden = false
     }
 }
 
