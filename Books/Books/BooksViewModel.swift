@@ -19,6 +19,10 @@ class BooksViewModel {
     var bestSellerCategory: BestSellerCategory
     var books: [Book] = []
     
+    var getBooks: [Book] {
+        return books
+    }
+    
     init(data: BestSellerCategory) {
         self.bestSellerCategory = data
         print("%%%%\(bestSellerCategory.name)")
