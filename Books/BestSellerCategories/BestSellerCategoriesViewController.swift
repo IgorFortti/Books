@@ -10,6 +10,20 @@ import UIKit
 class BestSellerCategoriesViewController: UIViewController {
     
     private let viewModel: BestSellerCategoriesViewModel = BestSellerCategoriesViewModel()
+    
+    
+    @IBOutlet weak var searchBar: UISearchBar! {
+        didSet {
+            searchBar.clipsToBounds = true
+            searchBar.layer.cornerRadius = 10
+            searchBar.placeholder = "Search"
+            searchBar.returnKeyType = .search
+            searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
+            searchBar.delegate = self
+        }
+    }
+    
+    
 
     @IBOutlet weak var bestSellerCategoriesTableView: UITableView! {
         didSet {
@@ -45,6 +59,16 @@ extension BestSellerCategoriesViewController: BestSellerCategoriesViewModelDeleg
     
     func failure(message: String) {
         debugPrint("Dados não foram buscados: \(message)")
+    }
+}
+
+extension BestSellerCategoriesViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.updateSearchText(text: searchText)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 }
 

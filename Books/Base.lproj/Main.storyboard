@@ -57,6 +57,7 @@
                     <navigationItem key="navigationItem" id="dI9-IB-k5P"/>
                     <connections>
                         <outlet property="bestSellerCategoriesTableView" destination="Bo3-TF-gi0" id="t9w-CE-RG0"/>
+                        <outlet property="searchBar" destination="YdV-Kn-RHT" id="uM9-3e-l1v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
