@@ -16,14 +16,11 @@ class BestSellerCategoriesViewModel {
     
     weak var delegate: BestSellerCategoriesViewModelDelegate?
     private let dataProvider: BestSellerCategoriesDataProvider
-    
     private var bestSellerCategories: [BestSellerCategory] = [] {
         didSet {
             updateFilteredList(searchText: searchText)
         }
     }
-    
-    
     private var filteredBestSellerCategories: [BestSellerCategory] = [] {
         didSet {
             delegate?.success()

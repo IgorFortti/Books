@@ -68,7 +68,24 @@ extension BestSellerCategoriesViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
+        UIView.transition(with: searchBar, duration: 0.5, options: .transitionCrossDissolve) {
+            searchBar.showsCancelButton = false
+            searchBar.resignFirstResponder()
+        }
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        UIView.transition(with: searchBar, duration: 0.5, options: .transitionCrossDissolve) {
+            searchBar.showsCancelButton = true
+            searchBar.becomeFirstResponder()
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        UIView.transition(with: searchBar, duration: 0.5, options: .transitionCrossDissolve) {
+            searchBar.showsCancelButton = false
+            searchBar.resignFirstResponder()
+        }
     }
 }
 

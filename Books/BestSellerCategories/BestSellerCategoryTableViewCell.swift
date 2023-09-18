@@ -19,7 +19,7 @@ class BestSellerCategoryTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        selectionStyle = .none
     }
 
     func setupCell(data: BestSellerCategory) {
