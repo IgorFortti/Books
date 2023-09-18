@@ -10,6 +10,7 @@
 		FA5BEE0F2AB878AF00F6D5E6 /* BestSellerCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5BEE0D2AB878AF00F6D5E6 /* BestSellerCategoryTableViewCell.swift */; };
 		FA5BEE102AB878AF00F6D5E6 /* BestSellerCategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA5BEE0E2AB878AF00F6D5E6 /* BestSellerCategoryTableViewCell.xib */; };
 		FA5BEE132AB87CBC00F6D5E6 /* BestSellerCategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5BEE122AB87CBC00F6D5E6 /* BestSellerCategoriesViewModel.swift */; };
+		FA5BEE162AB8993C00F6D5E6 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5BEE152AB8993B00F6D5E6 /* LoadingView.swift */; };
 		FA87F3E42AB4F7B100CBC342 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA87F3E32AB4F7B100CBC342 /* AppDelegate.swift */; };
 		FA87F3E62AB4F7B100CBC342 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA87F3E52AB4F7B100CBC342 /* SceneDelegate.swift */; };
 		FA87F3E82AB4F7B100CBC342 /* BestSellerCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA87F3E72AB4F7B100CBC342 /* BestSellerCategoriesViewController.swift */; };
@@ -33,6 +34,7 @@
 		FA5BEE0D2AB878AF00F6D5E6 /* BestSellerCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestSellerCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		FA5BEE0E2AB878AF00F6D5E6 /* BestSellerCategoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BestSellerCategoryTableViewCell.xib; sourceTree = "<group>"; };
 		FA5BEE122AB87CBC00F6D5E6 /* BestSellerCategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestSellerCategoriesViewModel.swift; sourceTree = "<group>"; };
+		FA5BEE152AB8993B00F6D5E6 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		FA87F3E02AB4F7B100CBC342 /* Books.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Books.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA87F3E32AB4F7B100CBC342 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA87F3E52AB4F7B100CBC342 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +78,14 @@
 			path = BestSellerCategories;
 			sourceTree = "<group>";
 		};
+		FA5BEE142AB8985400F6D5E6 /* Ultils */ = {
+			isa = PBXGroup;
+			children = (
+				FA5BEE152AB8993B00F6D5E6 /* LoadingView.swift */,
+			);
+			path = Ultils;
+			sourceTree = "<group>";
+		};
 		FA87F3D72AB4F7B100CBC342 = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +108,7 @@
 				FA87F3FD2AB5205A00CBC342 /* Model */,
 				FA87F3FE2AB5206700CBC342 /* DataProvider */,
 				FA5BEE112AB879E400F6D5E6 /* BestSellerCategories */,
+				FA5BEE142AB8985400F6D5E6 /* Ultils */,
 				FA87F3E92AB4F7B100CBC342 /* Main.storyboard */,
 				FA87F3EC2AB4F7B500CBC342 /* Assets.xcassets */,
 				FA87F3EE2AB4F7B500CBC342 /* LaunchScreen.storyboard */,
@@ -257,6 +268,7 @@
 				FA87F4152AB545D000CBC342 /* BooksDataProvider.swift in Sources */,
 				FA87F3FC2AB5157000CBC342 /* Book.swift in Sources */,
 				FA87F4112AB544E000CBC342 /* BooksRequest.swift in Sources */,
+				FA5BEE162AB8993C00F6D5E6 /* LoadingView.swift in Sources */,
 				FA87F4062AB527FC00CBC342 /* GenericDataProvider.swift in Sources */,
 				FA5BEE0F2AB878AF00F6D5E6 /* BestSellerCategoryTableViewCell.swift in Sources */,
 				FA87F4002AB5216B00CBC342 /* GenericRequest.swift in Sources */,

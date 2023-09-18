@@ -36,6 +36,7 @@ class BestSellerCategoriesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Loading.shared.start(from: bestSellerCategoriesTableView, isBackground: false)
         viewModel.fetchBestSellerCategories()
         viewModel.delegate = self
     }
@@ -54,6 +55,7 @@ extension BestSellerCategoriesViewController: BestSellerCategoriesViewModelDeleg
     func success() {
         DispatchQueue.main.async {
             self.bestSellerCategoriesTableView.reloadData()
+            Loading.shared.stop(from: self.bestSellerCategoriesTableView)
         }
     }
     
