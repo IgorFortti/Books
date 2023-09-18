@@ -11,7 +11,6 @@ class BestSellerCategoriesViewController: UIViewController {
     
     private let viewModel: BestSellerCategoriesViewModel = BestSellerCategoriesViewModel()
     
-    
     @IBOutlet weak var searchBar: UISearchBar! {
         didSet {
             searchBar.clipsToBounds = true
@@ -100,5 +99,11 @@ extension BestSellerCategoriesViewController: UITableViewDelegate, UITableViewDa
         let cell = tableView.dequeueReusableCell(withIdentifier: BestSellerCategoryTableViewCell.identifier, for: indexPath) as? BestSellerCategoryTableViewCell
         cell?.setupCell(data: viewModel.getBestSellerCategories[indexPath.row])
         return cell ?? UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedCell = viewModel.getBestSellerCategories[indexPath.row]
+        let viewController = BooksViewController(data: selectedCell)
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
