@@ -28,6 +28,7 @@ class BooksViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Loading.shared.start(from: customView?.tableView ?? UIView(), isBackground: false)
         viewModel.fetchBooks()
         viewModel.delegate = self
     }
@@ -46,6 +47,7 @@ extension BooksViewController: BooksViewModelDelegate {
     func success() {
         DispatchQueue.main.async {
             self.customView?.tableView.reloadData()
+            Loading.shared.stop(from: self.customView?.tableView ?? UIView())
         }
     }
     
