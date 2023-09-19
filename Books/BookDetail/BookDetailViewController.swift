@@ -28,7 +28,7 @@ class BookDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("%%%%\(viewModel.book.title)\n%%%%\(viewModel.book.author)\n%%%%\(viewModel.book.primaryIsbn13)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
