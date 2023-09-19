@@ -47,6 +47,7 @@ class BestSellerCategoriesViewController: UIViewController {
     private func setupNavigationBar() {
         title = "Best Seller Categories"
         navigationController?.navigationBar.isHidden = false
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
 }
 

@@ -23,8 +23,8 @@ class BooksView: UIView {
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.separatorInset = .zero
         tableView.register(BooksTableViewCell.self, forCellReuseIdentifier: BooksTableViewCell.identifier)
+        tableView.separatorStyle = .none
         return tableView
     }()
 

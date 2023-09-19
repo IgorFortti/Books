@@ -25,7 +25,6 @@ class BooksViewModel {
     
     init(data: BestSellerCategory) {
         self.bestSellerCategory = data
-        print("%%%%\(bestSellerCategory.name)")
     }
     
     func fetchBooks() {

@@ -40,6 +40,7 @@ class BooksViewController: UIViewController {
     private func setupNavigationBar() {
         title = viewModel.bestSellerCategory.name
         navigationController?.navigationBar.isHidden = false
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
 }
 
@@ -74,6 +75,12 @@ extension BooksViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let book = viewModel.books[indexPath.row]
         let height = book.bookImageHeight
-        return CGFloat(height) + 26
+        return CGFloat(height) + 35
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedCell = viewModel.books[indexPath.row]
+        let viewController = BookDetailViewController(data: selectedCell)
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
