@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class BooksTableViewCell: UITableViewCell {
     // MARK: - Properties
     static let identifier: String = String(describing: BooksTableViewCell.self)
     
-    lazy var titleLabel: UILabel = {
+    lazy var bookTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
@@ -19,6 +20,13 @@ class BooksTableViewCell: UITableViewCell {
         label.textAlignment = .center
         label.backgroundColor = .clear
         return label
+    }()
+    
+    lazy var bookImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
+        return imageView
     }()
     
     // MARK: - Initializers
@@ -32,7 +40,11 @@ class BooksTableViewCell: UITableViewCell {
     }
     // MARK: - Public Methods
     public func setupCell(data: Book) {
-        titleLabel.text = data.title
+        bookTitleLabel.text = data.title
+        guard let url = URL(string: data.bookImage) else { return }
+        DispatchQueue.main.async {
+            self.bookImageView.af.setImage(withURL: url)
+        }
     }
     
     // MARK: - Private Methods
@@ -43,13 +55,18 @@ class BooksTableViewCell: UITableViewCell {
     }
     
     private func addSubviews() {
-        contentView.addSubview(titleLabel)
+        contentView.addSubview(bookTitleLabel)
+        contentView.addSubview(bookImageView)
     }
     
     private func setupContraints() {
         NSLayoutConstraint.activate([
-            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            bookTitleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            bookTitleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
+            
+            bookImageView.topAnchor.constraint(equalTo: bookTitleLabel.bottomAnchor, constant: 5),
+            bookImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            bookImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
         ])
     }
 }

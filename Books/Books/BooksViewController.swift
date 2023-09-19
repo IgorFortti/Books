@@ -68,4 +68,10 @@ extension BooksViewController: UITableViewDelegate, UITableViewDataSource {
         cell?.setupCell(data: viewModel.books[indexPath.row])
         return cell ?? UITableViewCell()
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let book = viewModel.books[indexPath.row]
+        let height = book.bookImageHeight
+        return CGFloat(height) + 26
+    }
 }

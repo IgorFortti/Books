@@ -58,8 +58,9 @@ struct Book: Codable {
     let author: String
     let contributor: String
     let contributorNote: String
-    let bookImage: URL
-    let amazonProductURL: URL
+    let bookImage: String
+    let bookImageHeight: Int
+    let amazonProductURL: String
     let ageGroup: String
     let bookReviewLink: String
     let firstChapterLink: String
@@ -82,6 +83,7 @@ struct Book: Codable {
         case contributor
         case contributorNote = "contributor_note"
         case bookImage = "book_image"
+        case bookImageHeight = "book_image_height"
         case amazonProductURL = "amazon_product_url"
         case ageGroup = "age_group"
         case bookReviewLink = "book_review_link"
