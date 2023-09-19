@@ -17,4 +17,5 @@ struct API {
     static let apiKey = "c7aZd6hs6I6NOIpOHOlCUDDuhAleD3Pe"
     static let bestSellerCategories = "/lists/names.json"
     static let books = "/lists/current/%@.json"
+    static let bookReview = "/reviews.json"
 }
