@@ -220,7 +220,7 @@ class BookDetailView: UIView {
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             rankContainer.topAnchor.constraint(equalTo: bookImageView.topAnchor),
-            rankContainer.leadingAnchor.constraint(equalTo: bookImageView.trailingAnchor, constant: 10),
+            rankContainer.leadingAnchor.constraint(equalTo: bookImageView.trailingAnchor, constant: 20),
             rankContainer.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             rankContainer.bottomAnchor.constraint(equalTo: bookImageView.bottomAnchor, constant: -80),
             
@@ -248,12 +248,12 @@ class BookDetailView: UIView {
             authorLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -28),
             authorLabel.leadingAnchor.constraint(equalTo: bookImageView.trailingAnchor, constant: 18),
             
-            bookImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
+            bookImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 30),
             bookImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             bookImageView.heightAnchor.constraint(equalToConstant: 250),
             bookImageView.widthAnchor.constraint(equalToConstant: 160),
             
-            descriptionContainer.topAnchor.constraint(equalTo: bookImageView.bottomAnchor, constant: 30),
+            descriptionContainer.topAnchor.constraint(equalTo: bookImageView.bottomAnchor, constant: 40),
             descriptionContainer.leadingAnchor.constraint(equalTo: bookImageView.leadingAnchor),
             descriptionContainer.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             
@@ -270,7 +270,7 @@ class BookDetailView: UIView {
             descriptionLineView.trailingAnchor.constraint(equalTo: descriptionLabel.trailingAnchor),
             descriptionLineView.heightAnchor.constraint(equalToConstant: 0.5),
             
-            reviewsTableView.topAnchor.constraint(equalTo: descriptionContainer.bottomAnchor, constant: 30),
+            reviewsTableView.topAnchor.constraint(equalTo: descriptionContainer.bottomAnchor, constant: 40),
             reviewsTableView.leadingAnchor.constraint(equalTo: descriptionContainer.leadingAnchor),
             reviewsTableView.trailingAnchor.constraint(equalTo: descriptionContainer.trailingAnchor),
         ])
