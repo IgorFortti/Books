@@ -41,6 +41,9 @@
 		FABA614A2AB9FE88007EFB75 /* BookReviewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABA61492AB9FE88007EFB75 /* BookReviewRouter.swift */; };
 		FABA614C2ABA01FA007EFB75 /* BookReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABA614B2ABA01FA007EFB75 /* BookReviewRequest.swift */; };
 		FABA614F2ABA053D007EFB75 /* BookReviewDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABA614E2ABA053D007EFB75 /* BookReviewDataProvider.swift */; };
+		FABA61512ABA5F40007EFB75 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABA61502ABA5F40007EFB75 /* Extensions.swift */; };
+		FAF110DB2ABA827B007D726A /* BookDetailReviewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF110DA2ABA827B007D726A /* BookDetailReviewsTableViewCell.swift */; };
+		FAF110DD2ABA861C007D726A /* BookDetailReviewsTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF110DC2ABA861C007D726A /* BookDetailReviewsTableViewHeaderFooterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +85,9 @@
 		FABA61492AB9FE88007EFB75 /* BookReviewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookReviewRouter.swift; sourceTree = "<group>"; };
 		FABA614B2ABA01FA007EFB75 /* BookReviewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookReviewRequest.swift; sourceTree = "<group>"; };
 		FABA614E2ABA053D007EFB75 /* BookReviewDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookReviewDataProvider.swift; sourceTree = "<group>"; };
+		FABA61502ABA5F40007EFB75 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		FAF110DA2ABA827B007D726A /* BookDetailReviewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailReviewsTableViewCell.swift; sourceTree = "<group>"; };
+		FAF110DC2ABA861C007D726A /* BookDetailReviewsTableViewHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailReviewsTableViewHeaderFooterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +133,7 @@
 		FA5BEE142AB8985400F6D5E6 /* Ultils */ = {
 			isa = PBXGroup;
 			children = (
+				FABA61502ABA5F40007EFB75 /* Extensions.swift */,
 				FA5BEE172AB8B5EC00F6D5E6 /* Loading */,
 			);
 			path = Ultils;
@@ -272,6 +279,8 @@
 				FABA61452AB9E0DC007EFB75 /* BookDetailViewModel.swift */,
 				FABA61412AB9E0B7007EFB75 /* BookDetailViewController.swift */,
 				FABA61432AB9E0CA007EFB75 /* BookDetailView.swift */,
+				FAF110DA2ABA827B007D726A /* BookDetailReviewsTableViewCell.swift */,
+				FAF110DC2ABA861C007D726A /* BookDetailReviewsTableViewHeaderFooterView.swift */,
 			);
 			path = BookDetail;
 			sourceTree = "<group>";
@@ -416,6 +425,7 @@
 				FABA61422AB9E0B7007EFB75 /* BookDetailViewController.swift in Sources */,
 				FA5BEE2B2AB909B800F6D5E6 /* BooksTableViewCell.swift in Sources */,
 				FA5BEE272AB8D2F100F6D5E6 /* BooksView.swift in Sources */,
+				FAF110DD2ABA861C007D726A /* BookDetailReviewsTableViewHeaderFooterView.swift in Sources */,
 				FA5BEE192AB8B5FE00F6D5E6 /* Loading.swift in Sources */,
 				FA87F3F82AB4F7D600CBC342 /* API.swift in Sources */,
 				FA5BEE212AB8CD6300F6D5E6 /* BooksViewModel.swift in Sources */,
@@ -425,8 +435,10 @@
 				FA87F3E62AB4F7B100CBC342 /* SceneDelegate.swift in Sources */,
 				FA87F4042AB5242000CBC342 /* BestSellerCategoriesRouter.swift in Sources */,
 				FA5BEE132AB87CBC00F6D5E6 /* BestSellerCategoriesViewModel.swift in Sources */,
+				FABA61512ABA5F40007EFB75 /* Extensions.swift in Sources */,
 				FA87F4082AB5283900CBC342 /* BestSellerCategoriesDataProvider.swift in Sources */,
 				FABA61482AB9EDF3007EFB75 /* BookReview.swift in Sources */,
+				FAF110DB2ABA827B007D726A /* BookDetailReviewsTableViewCell.swift in Sources */,
 				FA87F3FA2AB5132D00CBC342 /* BestSellerCategory.swift in Sources */,
 				FA5BEE252AB8D22600F6D5E6 /* BooksViewController.swift in Sources */,
 			);
