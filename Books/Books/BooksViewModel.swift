@@ -15,9 +15,13 @@ protocol BooksViewModelDelegate: AnyObject {
 class BooksViewModel {
     
     weak var delegate: BooksViewModelDelegate?
-    let dataProvider = BooksDataProvider()
-    var bestSellerCategory: BestSellerCategory
-    var books: [Book] = []
+    private let dataProvider = BooksDataProvider()
+    private var bestSellerCategory: BestSellerCategory
+    private var books: [Book] = []
+    
+    var getNameBestSellerCategory: String {
+        return bestSellerCategory.displayName
+    }
     
     var getBooks: [Book] {
         return books

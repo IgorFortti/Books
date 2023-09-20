@@ -31,7 +31,6 @@ class BookDetailViewController: UIViewController {
         Loading.shared.start(from: customView ?? UIView())
         viewModel.fetchBookReview()
         viewModel.delegate = self
-        print("%%%%\(viewModel.book.title)\n%%%%\(viewModel.book.author)\n%%%%\(viewModel.book.primaryIsbn13)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,7 +38,7 @@ class BookDetailViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-        title = viewModel.book.title
+        title = viewModel.getBookTitle
         navigationController?.navigationBar.isHidden = false
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }

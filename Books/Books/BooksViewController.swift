@@ -38,7 +38,7 @@ class BooksViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-        title = viewModel.bestSellerCategory.name
+        title = viewModel.getNameBestSellerCategory
         navigationController?.navigationBar.isHidden = false
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
@@ -63,23 +63,23 @@ extension BooksViewController: UISearchBarDelegate {
 
 extension BooksViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.books.count
+        return viewModel.getBooks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: BooksTableViewCell.identifier, for: indexPath) as? BooksTableViewCell
-        cell?.setupCell(data: viewModel.books[indexPath.row])
+        cell?.setupCell(data: viewModel.getBooks[indexPath.row])
         return cell ?? UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let book = viewModel.books[indexPath.row]
+        let book = viewModel.getBooks[indexPath.row]
         let height = book.bookImageHeight
         return CGFloat(height) + 35
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedCell = viewModel.books[indexPath.row]
+        let selectedCell = viewModel.getBooks[indexPath.row]
         let viewController = BookDetailViewController(data: selectedCell)
         navigationController?.pushViewController(viewController, animated: true)
     }

@@ -17,7 +17,11 @@ class BookDetailViewModel {
     weak var delegate: BookDetailViewModelDelegate?
     private let dataProvider = BookReviewDataProvider()
     private var bookReviews: [BookReview] = []
-    var book: Book
+    private var book: Book
+    
+    var getBookTitle: String {
+        return book.title
+    }
     
     var getBookAuthor: String {
         return book.author
