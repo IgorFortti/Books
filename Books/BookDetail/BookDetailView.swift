@@ -24,15 +24,26 @@ class BookDetailView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.clipsToBounds = true
         view.layer.cornerRadius = 10
-        view.backgroundColor = .black
+        view.backgroundColor = .systemGray5
         return view
+    }()
+    
+    lazy var descriptionTitleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        label.textColor = .black
+        label.textAlignment = .left
+        label.numberOfLines = 1
+        label.text = "Description"
+        return label
     }()
     
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        label.textColor = .systemGray6
+        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        label.textColor = .black
         label.backgroundColor = .clear
         label.numberOfLines = 0
         let paragraphStyle = NSMutableParagraphStyle()
@@ -40,7 +51,7 @@ class BookDetailView: UIView {
         let attributedText = NSAttributedString(string: " ",
                                                 attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
         label.attributedText = attributedText
-        label.textAlignment = .justified
+        label.textAlignment = .natural
         label.clipsToBounds = true
         label.layer.cornerRadius = 10
         return label
@@ -94,6 +105,7 @@ class BookDetailView: UIView {
         addSubview(bookImageView)
         addSubview(descriptionContainer)
         descriptionContainer.addSubview(descriptionLabel)
+        descriptionContainer.addSubview(descriptionTitleLabel)
         addSubview(reviewsTableView)
     }
     
@@ -108,12 +120,15 @@ class BookDetailView: UIView {
             descriptionContainer.leadingAnchor.constraint(equalTo: bookImageView.leadingAnchor),
             descriptionContainer.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             
-            descriptionLabel.topAnchor.constraint(equalTo: descriptionContainer.topAnchor, constant: 8),
+            descriptionLabel.topAnchor.constraint(equalTo: descriptionContainer.topAnchor, constant: 38),
             descriptionLabel.leadingAnchor.constraint(equalTo: descriptionContainer.leadingAnchor, constant: 8),
             descriptionLabel.trailingAnchor.constraint(equalTo: descriptionContainer.trailingAnchor, constant: -8),
             descriptionLabel.bottomAnchor.constraint(equalTo: descriptionContainer.bottomAnchor, constant: -8),
             
-            reviewsTableView.topAnchor.constraint(equalTo: descriptionContainer.bottomAnchor, constant: 5),
+            descriptionTitleLabel.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: -8),
+            descriptionTitleLabel.leadingAnchor.constraint(equalTo: descriptionLabel.leadingAnchor),
+            
+            reviewsTableView.topAnchor.constraint(equalTo: descriptionContainer.bottomAnchor, constant: 30),
             reviewsTableView.leadingAnchor.constraint(equalTo: descriptionContainer.leadingAnchor),
             reviewsTableView.trailingAnchor.constraint(equalTo: descriptionContainer.trailingAnchor),
         ])

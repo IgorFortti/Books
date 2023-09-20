@@ -17,7 +17,7 @@ class BookDetailReviewsTableViewCell: UITableViewCell {
         label.text = ""
         label.font = UIFont.italicSystemFont(ofSize: 14)
         label.textColor = .black
-        label.textAlignment = .justified
+        label.textAlignment = .natural
         label.backgroundColor = .clear
         label.numberOfLines = 0
         return label
@@ -26,7 +26,7 @@ class BookDetailReviewsTableViewCell: UITableViewCell {
     lazy var bylineLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.italicSystemFont(ofSize: 14)
+        label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .black
         label.textAlignment = .right
         label.backgroundColor = .clear
@@ -45,7 +45,7 @@ class BookDetailReviewsTableViewCell: UITableViewCell {
     }
     // MARK: - Public Methods
     public func setupCell(data: BookReview) {
-        summaryLabel.text = data.summary
+        summaryLabel.text = String(format: "\"%@\"", data.summary)
         bylineLabel.text = "-" + " " + data.byline.capitalized
     }
     
