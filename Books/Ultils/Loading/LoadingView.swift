@@ -15,7 +15,7 @@ class LoadingView: UIView {
     lazy var backgroundView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .black.withAlphaComponent(0.4)
+        view.backgroundColor = .white
         return view
     }()
     

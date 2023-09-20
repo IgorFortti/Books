@@ -28,6 +28,7 @@ class BookDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Loading.shared.start(from: customView ?? UIView())
         viewModel.fetchBookReview()
         viewModel.delegate = self
         print("%%%%\(viewModel.book.title)\n%%%%\(viewModel.book.author)\n%%%%\(viewModel.book.primaryIsbn13)")
@@ -42,14 +43,27 @@ class BookDetailViewController: UIViewController {
         navigationController?.navigationBar.isHidden = false
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
+    
+    private func updateReviewsTableView() {
+        if viewModel.getBookReviews.count == 0 {
+            customView?.reviewsTableView.backgroundColor = .white
+        } else {
+            customView?.reviewsTableView.backgroundColor = .systemGray6
+        }
+        customView?.reviewsTableView.reloadData()
+    }
 }
 
 extension BookDetailViewController: BookDetailViewModelDelegate {
     func success() {
         DispatchQueue.main.async {
+            self.customView?.setupAuthorLabel(author: self.viewModel.getBookAuthor)
+            self.customView?.setupPublisherLabel(publisher: self.viewModel.getBookPublisher)
+            self.customView?.setupRankLabel(rank: self.viewModel.getBookRank)
             self.customView?.setupBookImageView(imageURL: self.viewModel.getBookImageUrlString)
             self.customView?.setupDescriptionLabel(description: self.viewModel.getDescriptionBook)
-            self.customView?.reviewsTableView.reloadData()
+            self.updateReviewsTableView()
+            Loading.shared.stop(from: self.customView ?? UIView())
         }
     }
     
@@ -71,7 +85,7 @@ extension BookDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: BookDetailReviewsTableViewHeaderFooterView.identifier) as? BookDetailReviewsTableViewHeaderFooterView
-        header?.titleLabel.text = "Reviews"
+        header?.setupHeader(title: viewModel.getTitleBookDetailsReviewTableViewHeader)
         return header ?? UIView()
     }
     

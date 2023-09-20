@@ -32,8 +32,8 @@ class BookDetailReviewsTableViewHeaderFooterView: UITableViewHeaderFooterView {
     }
     
     // MARK: - Public Methods
-    public func setupHeader(data: BookReview) {
-
+    public func setupHeader(title: String) {
+        titleLabel.text = title
     }
     
     // MARK: - Private Methods

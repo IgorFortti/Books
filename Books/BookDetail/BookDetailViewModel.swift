@@ -19,12 +19,34 @@ class BookDetailViewModel {
     private var bookReviews: [BookReview] = []
     var book: Book
     
+    var getBookAuthor: String {
+        return book.author
+    }
+    
+    var getBookPublisher: String {
+        return book.publisher
+    }
+    
+    var getBookRank: String {
+        return String(book.rank)
+    }
+    
     var getBookImageUrlString: String {
         return book.bookImage
     }
     
     var getDescriptionBook: String {
         return book.description
+    }
+    
+    var getTitleBookDetailsReviewTableViewHeader: String {
+        if bookReviews.count == 0 {
+            return "There are no reviews yet"
+        } else if bookReviews.count == 1 {
+            return "Review"
+        } else {
+            return "Reviews"
+        }
     }
     
     var getBookReviews: [BookReview] {
@@ -36,7 +58,7 @@ class BookDetailViewModel {
     }
     
     func fetchBookReview() {
-        dataProvider.fetchBookReview(isbn: "9780307476463") { [weak self] result, failure in
+        dataProvider.fetchBookReview(isbn: book.primaryIsbn13) { [weak self] result, failure in
             if let result = result {
                 self?.bookReviews = result.bookReviews
                 self?.delegate?.success()

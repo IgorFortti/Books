@@ -7,8 +7,92 @@
 
 import UIKit
 import AlamofireImage
+import SystemConfiguration
 
 class BookDetailView: UIView {
+    
+//    Author
+//    publisher
+//    rank
+//    price
+    
+    lazy var authorTitleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        label.textColor = .black
+        label.textAlignment = .right
+        label.backgroundColor = .clear
+        label.text = "Author"
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    lazy var authorLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        label.textColor = .black
+        label.textAlignment = .right
+        label.backgroundColor = .clear
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    lazy var publisherTitleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        label.textColor = .black
+        label.textAlignment = .right
+        label.backgroundColor = .clear
+        label.text = "Publisher"
+        return label
+    }()
+    
+    lazy var publisherLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        label.textColor = .black
+        label.textAlignment = .right
+        label.backgroundColor = .clear
+        return label
+    }()
+    
+    lazy var rankContainer: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 10
+        view.backgroundColor = .systemGray6
+        return view
+    }()
+    
+    lazy var rankTitleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 26, weight: .semibold)
+        label.textColor = .black
+        label.textAlignment = .center
+        label.backgroundColor = .white
+        label.text = "NYT Rank"
+        label.clipsToBounds = true
+        label.layer.cornerRadius = 10
+        return label
+    }()
+    
+    lazy var rankLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 60, weight: .semibold)
+        label.textColor = .black
+        label.textAlignment = .center
+        label.backgroundColor = .white
+        label.clipsToBounds = true
+        label.layer.cornerRadius = 10
+        return label
+    }()
     
     lazy var bookImageView: UIImageView = {
         let imageView = UIImageView()
@@ -39,6 +123,13 @@ class BookDetailView: UIView {
         return label
     }()
     
+    lazy var descriptionLineView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .black
+        return view
+    }()
+    
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -61,14 +152,11 @@ class BookDetailView: UIView {
         let tableView = DinamicTableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
-        tableView.backgroundColor = .systemGray6
         tableView.clipsToBounds = true
         tableView.layer.cornerRadius = 10
         tableView.sectionHeaderTopPadding = 8
-        
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.bounces = false
-        
         tableView.register(BookDetailReviewsTableViewCell.self, forCellReuseIdentifier: BookDetailReviewsTableViewCell.identifier)
         tableView.register(BookDetailReviewsTableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: BookDetailReviewsTableViewHeaderFooterView.identifier)
         return tableView
@@ -83,6 +171,18 @@ class BookDetailView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupAuthorLabel(author: String) {
+        self.authorLabel.text = author
+    }
+    
+    func setupPublisherLabel(publisher: String) {
+        self.publisherLabel.text = publisher
+    }
+    
+    func setupRankLabel(rank: String) {
+        self.rankLabel.text = "# \(rank)"
     }
     
     func setupBookImageView(imageURL: String) {
@@ -102,15 +202,52 @@ class BookDetailView: UIView {
     }
     
     private func addSubviews() {
+        addSubview(authorTitleLabel)
+        addSubview(authorLabel)
+        addSubview(publisherTitleLabel)
+        addSubview(publisherLabel)
+        addSubview(rankContainer)
+        rankContainer.addSubview(rankLabel)
+        rankContainer.addSubview(rankTitleLabel)
         addSubview(bookImageView)
         addSubview(descriptionContainer)
         descriptionContainer.addSubview(descriptionLabel)
+        descriptionContainer.addSubview(descriptionLineView)
         descriptionContainer.addSubview(descriptionTitleLabel)
         addSubview(reviewsTableView)
     }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
+            rankContainer.topAnchor.constraint(equalTo: bookImageView.topAnchor),
+            rankContainer.leadingAnchor.constraint(equalTo: bookImageView.trailingAnchor, constant: 10),
+            rankContainer.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            rankContainer.bottomAnchor.constraint(equalTo: bookImageView.bottomAnchor, constant: -80),
+            
+            rankTitleLabel.topAnchor.constraint(equalTo: rankContainer.topAnchor, constant: 8),
+            rankTitleLabel.leadingAnchor.constraint(equalTo: rankContainer.leadingAnchor, constant: 8),
+            rankTitleLabel.trailingAnchor.constraint(equalTo: rankContainer.trailingAnchor, constant: -8),
+            rankTitleLabel.heightAnchor.constraint(equalToConstant: 40),
+            
+            rankLabel.topAnchor.constraint(equalTo: rankTitleLabel.bottomAnchor, constant: 8),
+            rankLabel.leadingAnchor.constraint(equalTo: rankContainer.leadingAnchor, constant: 8),
+            rankLabel.trailingAnchor.constraint(equalTo: rankContainer.trailingAnchor, constant: -8),
+            rankLabel.bottomAnchor.constraint(equalTo: rankContainer.bottomAnchor, constant: -8),
+            
+            publisherTitleLabel.topAnchor.constraint(equalTo: rankContainer.bottomAnchor, constant: 8),
+            publisherTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -28),
+            
+            publisherLabel.topAnchor.constraint(equalTo: publisherTitleLabel.bottomAnchor),
+            publisherLabel.trailingAnchor.constraint(equalTo: publisherTitleLabel.trailingAnchor),
+            publisherLabel.leadingAnchor.constraint(equalTo: bookImageView.trailingAnchor, constant: 18),
+            
+            authorTitleLabel.bottomAnchor.constraint(equalTo: authorLabel.topAnchor),
+            authorTitleLabel.trailingAnchor.constraint(equalTo: authorLabel.trailingAnchor),
+            
+            authorLabel.bottomAnchor.constraint(equalTo: bookImageView.bottomAnchor),
+            authorLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -28),
+            authorLabel.leadingAnchor.constraint(equalTo: bookImageView.trailingAnchor, constant: 18),
+            
             bookImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
             bookImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             bookImageView.heightAnchor.constraint(equalToConstant: 250),
@@ -127,6 +264,11 @@ class BookDetailView: UIView {
             
             descriptionTitleLabel.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: -8),
             descriptionTitleLabel.leadingAnchor.constraint(equalTo: descriptionLabel.leadingAnchor),
+            
+            descriptionLineView.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: -5),
+            descriptionLineView.leadingAnchor.constraint(equalTo: descriptionLabel.leadingAnchor),
+            descriptionLineView.trailingAnchor.constraint(equalTo: descriptionLabel.trailingAnchor),
+            descriptionLineView.heightAnchor.constraint(equalToConstant: 0.5),
             
             reviewsTableView.topAnchor.constraint(equalTo: descriptionContainer.bottomAnchor, constant: 30),
             reviewsTableView.leadingAnchor.constraint(equalTo: descriptionContainer.leadingAnchor),
