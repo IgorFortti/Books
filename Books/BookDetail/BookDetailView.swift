@@ -46,14 +46,18 @@ class BookDetailView: UIView {
         return label
     }()
     
-    lazy var reviewsTableView: UITableView = {
-        let tableView = UITableView()
+    lazy var reviewsTableView: DinamicTableView = {
+        let tableView = DinamicTableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
         tableView.backgroundColor = .systemGray6
         tableView.clipsToBounds = true
         tableView.layer.cornerRadius = 10
         tableView.sectionHeaderTopPadding = 8
+        
+        tableView.contentInsetAdjustmentBehavior = .never
+        tableView.bounces = false
+        
         tableView.register(BookDetailReviewsTableViewCell.self, forCellReuseIdentifier: BookDetailReviewsTableViewCell.identifier)
         tableView.register(BookDetailReviewsTableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: BookDetailReviewsTableViewHeaderFooterView.identifier)
         return tableView
@@ -112,7 +116,6 @@ class BookDetailView: UIView {
             reviewsTableView.topAnchor.constraint(equalTo: descriptionContainer.bottomAnchor, constant: 5),
             reviewsTableView.leadingAnchor.constraint(equalTo: descriptionContainer.leadingAnchor),
             reviewsTableView.trailingAnchor.constraint(equalTo: descriptionContainer.trailingAnchor),
-            reviewsTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
         ])
         let minHeightConstraint = descriptionContainer.heightAnchor.constraint(greaterThanOrEqualTo: descriptionLabel.heightAnchor, constant: 0)
         minHeightConstraint.priority = .defaultLow
