@@ -53,7 +53,7 @@ class BooksTableViewCell: UITableViewCell {
     
     private func setupContraints() {
         NSLayoutConstraint.activate([
-            bookImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
+            bookImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
             bookImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             bookImageView.widthAnchor.constraint(equalToConstant: 320),
             bookImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)

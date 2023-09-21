@@ -19,8 +19,12 @@ class BooksViewModel {
     private var bestSellerCategory: BestSellerCategory
     private var books: [Book] = []
     
-    var getNameBestSellerCategory: String {
+    var getCategoryName: String {
         return bestSellerCategory.displayName
+    }
+    
+    var getTitle: String {
+        return "Ranking"
     }
     
     var getBooks: [Book] {

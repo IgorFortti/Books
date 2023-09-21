@@ -22,13 +22,13 @@ class BooksViewController: UIViewController {
     }
     
     override func loadView() {
-        self.customView = BooksView(self, self, self)
+        self.customView = BooksView(self, self)
         view = customView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Loading.shared.start(from: customView?.tableView ?? UIView(), isBackground: false)
+        Loading.shared.start(from: customView ?? UIView())
         viewModel.fetchBooks()
         viewModel.delegate = self
     }
@@ -38,7 +38,7 @@ class BooksViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-        title = viewModel.getNameBestSellerCategory
+        title = viewModel.getTitle
         navigationController?.navigationBar.isHidden = false
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
@@ -47,18 +47,15 @@ class BooksViewController: UIViewController {
 extension BooksViewController: BooksViewModelDelegate {
     func success() {
         DispatchQueue.main.async {
+            self.customView?.setupTitleLabel(title: self.viewModel.getCategoryName)
             self.customView?.tableView.reloadData()
-            Loading.shared.stop(from: self.customView?.tableView ?? UIView())
+            Loading.shared.stop(from: self.customView ?? UIView())
         }
     }
     
     func failure(message: String) {
         print(message)
     }
-}
-
-extension BooksViewController: UISearchBarDelegate {
-    
 }
 
 extension BooksViewController: UITableViewDelegate, UITableViewDataSource {
