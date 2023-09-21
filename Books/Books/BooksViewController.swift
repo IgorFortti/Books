@@ -28,13 +28,18 @@ class BooksViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Loading.shared.start(from: customView ?? UIView())
-        viewModel.fetchBooks()
-        viewModel.delegate = self
+        doFetchBooks()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setupNavigationBar()
+        navigationController?.navigationBar.isHidden = true
+        super.viewWillAppear(animated)
+    }
+    
+    private func doFetchBooks() {
+        Loading.shared.start(from: customView ?? UIView())
+        viewModel.fetchBooks()
+        viewModel.delegate = self
     }
     
     private func setupNavigationBar() {
@@ -51,6 +56,7 @@ class BooksViewController: ViewController {
 extension BooksViewController: BooksViewModelDelegate {
     func success() {
         DispatchQueue.main.async {
+            self.setupNavigationBar()
             self.setupTitleLabel(title: self.viewModel.getCategoryName)
             self.customView?.tableView.reloadData()
             Loading.shared.stop(from: self.customView ?? UIView())
@@ -58,7 +64,9 @@ extension BooksViewController: BooksViewModelDelegate {
     }
     
     func failure(message: String) {
-        print(message)
+        DispatchQueue.main.async {
+            self.displayError(message: message)
+        }
     }
 }
 

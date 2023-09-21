@@ -100,7 +100,6 @@ extension BookDetailViewController: BookDetailViewModelDelegate {
     }
     
     func failure(message: String) {
-        print(message)
         DispatchQueue.main.async {
             self.displayError(message: message)
         }

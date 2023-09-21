@@ -14,6 +14,7 @@ class BestSellerCategoriesViewController: ViewController {
     @IBOutlet weak var searchBar: UISearchBar! {
         didSet {
             searchBar.clipsToBounds = true
+            searchBar.isHidden = true
             searchBar.layer.cornerRadius = 10
             searchBar.placeholder = "Search"
             searchBar.returnKeyType = .search
@@ -35,13 +36,18 @@ class BestSellerCategoriesViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Loading.shared.start(from: bestSellerCategoriesTableView, isBackground: false)
-        viewModel.fetchBestSellerCategories()
-        viewModel.delegate = self
+        doFetchBestSellerCategories()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setupNavigationBar()
+        navigationController?.navigationBar.isHidden = true
+        super.viewWillAppear(animated)
+    }
+    
+    private func doFetchBestSellerCategories() {
+        Loading.shared.start(from: bestSellerCategoriesTableView, isBackground: false)
+        viewModel.fetchBestSellerCategories()
+        viewModel.delegate = self
     }
     
     private func setupNavigationBar() {
@@ -54,13 +60,17 @@ class BestSellerCategoriesViewController: ViewController {
 extension BestSellerCategoriesViewController: BestSellerCategoriesViewModelDelegate {
     func success() {
         DispatchQueue.main.async {
+            self.setupNavigationBar()
+            self.searchBar.isHidden = false
             self.bestSellerCategoriesTableView.reloadData()
             Loading.shared.stop(from: self.bestSellerCategoriesTableView)
         }
     }
     
     func failure(message: String) {
-        debugPrint("Dados não foram buscados: \(message)")
+        DispatchQueue.main.async {
+            self.displayError(message: message)
+        }
     }
 }
 
