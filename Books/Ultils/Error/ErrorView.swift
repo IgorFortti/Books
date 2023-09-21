@@ -36,8 +36,7 @@ class ErrorView: UIView {
     lazy var messageErrorLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Error Error Error Error Error Error Error Error "
-        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         label.textColor = .black
         label.textAlignment = .center
         label.backgroundColor = .clear
@@ -52,7 +51,7 @@ class ErrorView: UIView {
         button.layer.cornerRadius = 20
         button.backgroundColor = .systemBlue
         button.setTitle("Try Again", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         button.setTitleColor(.white, for: .normal)
         return button
     }()
@@ -67,7 +66,7 @@ class ErrorView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .clear
         button.setTitle("Cancel", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         button.setTitleColor(.systemBlue, for: .normal)
         return button
     }()
@@ -77,11 +76,12 @@ class ErrorView: UIView {
         completionHandler?(.cancel)
     }
     
-    init(dismissAction:(() -> Void)? = nil , completionHandler: ((ErrorViewAction) -> Void)? = nil) {
+    init(message: String, dismissAction:(() -> Void)? = nil , completionHandler: ((ErrorViewAction) -> Void)? = nil) {
         super.init(frame: .zero)
         setupUI()
         self.dismissAction = dismissAction
         self.completionHandler = completionHandler
+        self.messageErrorLabel.text = message
     }
     
     required init?(coder: NSCoder) {

@@ -17,8 +17,8 @@ class ViewController: UIViewController {
         dismiss(animated: false, completion: nil)
     }
     
-    func displayError() {
-        let error = ErrorView(dismissAction: dismissErrorView) { action in
+    func displayError(message: String) {
+        let error = ErrorView(message: message, dismissAction: dismissErrorView) { action in
             switch action {
             case .tryAgain:
                 self.viewDidLoad()
