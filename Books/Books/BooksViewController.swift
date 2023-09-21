@@ -74,9 +74,7 @@ extension BooksViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let book = viewModel.getBooks[indexPath.row]
-        let height = book.bookImageHeight
-        return CGFloat(height) + 35
+        return CGFloat(viewModel.getBooks[indexPath.row].bookImageHeight) + 35
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
