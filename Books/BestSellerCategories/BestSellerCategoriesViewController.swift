@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BestSellerCategoriesViewController: UIViewController {
+class BestSellerCategoriesViewController: ViewController {
     
     private let viewModel: BestSellerCategoriesViewModel = BestSellerCategoriesViewModel()
     

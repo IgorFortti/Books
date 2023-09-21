@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BooksViewController: UIViewController {
+class BooksViewController: ViewController {
     
     private let viewModel: BooksViewModel
     private var customView: BooksView?

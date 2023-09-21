@@ -8,7 +8,7 @@
 import UIKit
 import Alamofire
 
-class BookDetailViewController: UIViewController {
+class BookDetailViewController: ViewController {
     
     private let viewModel: BookDetailViewModel
     private var customView: BookDetailView?
@@ -29,13 +29,18 @@ class BookDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Loading.shared.start(from: customView ?? UIView())
-        viewModel.fetchBookReview()
-        viewModel.delegate = self
+        doFetchBookReview()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setupNavigationBar()
+        navigationController?.navigationBar.isHidden = true
+        super.viewWillAppear(animated)
+    }
+    
+    private func doFetchBookReview() {
+        Loading.shared.start(from: customView ?? UIView())
+        viewModel.fetchBookReview()
+        viewModel.delegate = self
     }
     
     private func setupNavigationBar() {
@@ -83,6 +88,7 @@ class BookDetailViewController: UIViewController {
 extension BookDetailViewController: BookDetailViewModelDelegate {
     func success() {
         DispatchQueue.main.async {
+            self.setupNavigationBar()
             self.setupAuthorLabel(author: self.viewModel.getBookAuthor)
             self.setupPublisherLabel(publisher: self.viewModel.getBookPublisher)
             self.setupRankLabel(rank: self.viewModel.getBookRank)
@@ -95,8 +101,12 @@ extension BookDetailViewController: BookDetailViewModelDelegate {
     
     func failure(message: String) {
         print(message)
+        DispatchQueue.main.async {
+            self.displayError()
+        }
     }
 }
+
 
 extension BookDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

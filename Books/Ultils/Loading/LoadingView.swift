@@ -37,7 +37,7 @@ class LoadingView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupView() {
+    func setupUI() {
         if isBackground {
             addSubview(backgroundView)
             addSubview(indicatorView)

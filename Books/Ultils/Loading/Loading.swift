@@ -17,7 +17,7 @@ class Loading {
         let loading = LoadingView(parrentView: view, isBackground: isBackground, isLarge: isLarge)
         loading.indicatorView.startAnimating()
         view.addSubview(loading)
-        loading.setupView()
+        loading.setupUI()
     }
     
     func stop(from view: UIView) {
