@@ -6,15 +6,8 @@
 //
 
 import UIKit
-import AlamofireImage
-import SystemConfiguration
 
 class BookDetailView: UIView {
-    
-//    Author
-//    publisher
-//    rank
-//    price
     
     lazy var authorTitleLabel: UILabel = {
         let label = UILabel()
@@ -171,28 +164,6 @@ class BookDetailView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setupAuthorLabel(author: String) {
-        self.authorLabel.text = author
-    }
-    
-    func setupPublisherLabel(publisher: String) {
-        self.publisherLabel.text = publisher
-    }
-    
-    func setupRankLabel(rank: String) {
-        self.rankLabel.text = "# \(rank)"
-    }
-    
-    func setupBookImageView(imageURL: String) {
-        print("%%%%" + imageURL)
-        guard let url = URL(string: imageURL) else { return }
-        bookImageView.af.setImage(withURL: url)
-    }
-    
-    func setupDescriptionLabel(description: String) {
-        descriptionLabel.text = description
     }
     
     private func setupUI() {

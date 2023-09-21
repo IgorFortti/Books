@@ -38,10 +38,6 @@ class BooksView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupTitleLabel(title: String) {
-        self.categoryNameLabel.text = title
-    }
-    
     private func setupUI() {
         backgroundColor = .white
         addSubviews()

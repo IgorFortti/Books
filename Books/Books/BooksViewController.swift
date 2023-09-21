@@ -42,12 +42,16 @@ class BooksViewController: UIViewController {
         navigationController?.navigationBar.isHidden = false
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
+    
+    func setupTitleLabel(title: String) {
+        customView?.categoryNameLabel.text = title
+    }
 }
 
 extension BooksViewController: BooksViewModelDelegate {
     func success() {
         DispatchQueue.main.async {
-            self.customView?.setupTitleLabel(title: self.viewModel.getCategoryName)
+            self.setupTitleLabel(title: self.viewModel.getCategoryName)
             self.customView?.tableView.reloadData()
             Loading.shared.stop(from: self.customView ?? UIView())
         }

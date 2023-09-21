@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class BookDetailViewController: UIViewController {
     
@@ -44,23 +45,49 @@ class BookDetailViewController: UIViewController {
     }
     
     private func updateReviewsTableView() {
-        if viewModel.getBookReviews.count == 0 {
+        if viewModel.getBookReviews.isEmpty {
             customView?.reviewsTableView.backgroundColor = .white
         } else {
             customView?.reviewsTableView.backgroundColor = .systemGray6
         }
         customView?.reviewsTableView.reloadData()
     }
+    
+    private func setupAuthorLabel(author: String) {
+        customView?.authorLabel.text = author
+    }
+    
+    private func setupPublisherLabel(publisher: String) {
+        customView?.publisherLabel.text = publisher
+    }
+    
+    private func setupRankLabel(rank: String) {
+        customView?.rankLabel.text = "# \(rank)"
+    }
+    
+    private func setupBookImageView(imageURL: String) {
+        print("%%%%" + imageURL)
+        guard let url = URL(string: imageURL) else { return }
+        customView?.bookImageView.af.setImage(withURL: url)
+    }
+    
+    private func setupDescriptionLabel(description: String) {
+        if description.isEmpty {
+            customView?.descriptionContainer.isHidden = true
+        } else {
+            customView?.descriptionLabel.text = description
+        }
+    }
 }
 
 extension BookDetailViewController: BookDetailViewModelDelegate {
     func success() {
         DispatchQueue.main.async {
-            self.customView?.setupAuthorLabel(author: self.viewModel.getBookAuthor)
-            self.customView?.setupPublisherLabel(publisher: self.viewModel.getBookPublisher)
-            self.customView?.setupRankLabel(rank: self.viewModel.getBookRank)
-            self.customView?.setupBookImageView(imageURL: self.viewModel.getBookImageUrlString)
-            self.customView?.setupDescriptionLabel(description: self.viewModel.getDescriptionBook)
+            self.setupAuthorLabel(author: self.viewModel.getBookAuthor)
+            self.setupPublisherLabel(publisher: self.viewModel.getBookPublisher)
+            self.setupRankLabel(rank: self.viewModel.getBookRank)
+            self.setupBookImageView(imageURL: self.viewModel.getBookImageUrlString)
+            self.setupDescriptionLabel(description: self.viewModel.getDescriptionBook)
             self.updateReviewsTableView()
             Loading.shared.stop(from: self.customView ?? UIView())
         }
