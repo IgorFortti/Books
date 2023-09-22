@@ -245,19 +245,19 @@ class BookDetailView: UIView {
             reviewsTableView.trailingAnchor.constraint(equalTo: descriptionContainer.trailingAnchor),
         ])
         
-        let rankContainerBottomConstraint = rankContainer.bottomAnchor.constraint(lessThanOrEqualTo: bookImageView.bottomAnchor, constant: -80)
+        let rankContainerBottomConstraint = rankContainer.bottomAnchor.constraint(equalTo: bookImageView.bottomAnchor, constant: -80)
         rankContainerBottomConstraint.priority = .defaultLow
         rankContainerBottomConstraint.isActive = true
         
-        let authorTitleLabelTopConstraint = authorTitleLabel.topAnchor.constraint(greaterThanOrEqualTo: publisherLabel.bottomAnchor, constant: 10)
-        authorTitleLabelTopConstraint.priority = .defaultHigh
+        let authorTitleLabelTopConstraint = authorTitleLabel.topAnchor.constraint(equalTo: publisherLabel.bottomAnchor, constant: 10)
+        authorTitleLabelTopConstraint.priority = .defaultLow
         authorTitleLabelTopConstraint.isActive = true
         
         let authorLabelBottomConstraintMinimun = authorLabel.bottomAnchor.constraint(lessThanOrEqualTo: descriptionContainer.topAnchor, constant: -10)
         authorLabelBottomConstraintMinimun.priority = .defaultHigh
         authorLabelBottomConstraintMinimun.isActive = true
         
-        let authorLabelBottomConstraintMaximum = authorLabel.bottomAnchor.constraint(greaterThanOrEqualTo: bookImageView.bottomAnchor, constant: 0)
+        let authorLabelBottomConstraintMaximum = authorLabel.bottomAnchor.constraint(equalTo: bookImageView.bottomAnchor, constant: 0)
         authorLabelBottomConstraintMaximum.priority = .defaultLow
         authorLabelBottomConstraintMaximum.isActive = true
         
