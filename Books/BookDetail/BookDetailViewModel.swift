@@ -20,7 +20,7 @@ class BookDetailViewModel {
     private var book: Book
     
     var getBookTitle: String {
-        return book.title
+        return book.title.capitalized
     }
     
     var getBookAuthor: String {
@@ -32,7 +32,7 @@ class BookDetailViewModel {
     }
     
     var getBookRank: String {
-        return String(book.rank)
+        return String("# \(book.rank)")
     }
     
     var getBookImageUrlString: String {
@@ -44,7 +44,7 @@ class BookDetailViewModel {
     }
     
     var getTitleBookDetailsReviewTableViewHeader: String {
-        if bookReviews.count == 0 {
+        if bookReviews.isEmpty {
             return "There are no reviews yet"
         } else if bookReviews.count == 1 {
             return "Review"

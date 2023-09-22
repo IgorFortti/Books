@@ -32,12 +32,6 @@ class BookDetailViewController: ViewController {
         doFetchBookReview()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = false
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        super.viewWillAppear(animated)
-    }
-    
     private func doFetchBookReview() {
         Loading.shared.start(from: customView ?? UIView())
         viewModel.fetchBookReview()
@@ -45,6 +39,7 @@ class BookDetailViewController: ViewController {
     }
     
     private func setupNavigationBar(title: String) {
+        navigationController?.navigationBar.isHidden = false
         self.title = title
     }
     
@@ -66,7 +61,7 @@ class BookDetailViewController: ViewController {
     }
     
     private func setupRankLabel(rank: String) {
-        customView?.rankLabel.text = "# \(rank)"
+        customView?.rankLabel.text = rank
     }
     
     private func setupBookImageView(imageURL: String) {

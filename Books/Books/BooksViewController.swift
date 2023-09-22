@@ -31,12 +31,6 @@ class BooksViewController: ViewController {
         doFetchBooks()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = false
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        super.viewWillAppear(animated)
-    }
-    
     private func doFetchBooks() {
         Loading.shared.start(from: customView ?? UIView())
         viewModel.fetchBooks()
@@ -44,6 +38,7 @@ class BooksViewController: ViewController {
     }
     
     private func setupNavigationBar(title: String) {
+        navigationController?.navigationBar.isHidden = false
         self.title = title
     }
     
