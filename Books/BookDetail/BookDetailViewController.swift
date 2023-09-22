@@ -33,7 +33,8 @@ class BookDetailViewController: ViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.isHidden = false
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         super.viewWillAppear(animated)
     }
     
@@ -43,10 +44,8 @@ class BookDetailViewController: ViewController {
         viewModel.delegate = self
     }
     
-    private func setupNavigationBar() {
-        title = viewModel.getBookTitle
-        navigationController?.navigationBar.isHidden = false
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    private func setupNavigationBar(title: String) {
+        self.title = title
     }
     
     private func updateReviewsTableView() {
@@ -88,7 +87,7 @@ class BookDetailViewController: ViewController {
 extension BookDetailViewController: BookDetailViewModelDelegate {
     func success() {
         DispatchQueue.main.async {
-            self.setupNavigationBar()
+            self.setupNavigationBar(title: self.viewModel.getBookTitle)
             self.setupAuthorLabel(author: self.viewModel.getBookAuthor)
             self.setupPublisherLabel(publisher: self.viewModel.getBookPublisher)
             self.setupRankLabel(rank: self.viewModel.getBookRank)

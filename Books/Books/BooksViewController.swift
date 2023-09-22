@@ -32,7 +32,8 @@ class BooksViewController: ViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.isHidden = false
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         super.viewWillAppear(animated)
     }
     
@@ -42,22 +43,19 @@ class BooksViewController: ViewController {
         viewModel.delegate = self
     }
     
-    private func setupNavigationBar() {
-        title = viewModel.getTitle
-        navigationController?.navigationBar.isHidden = false
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    private func setupNavigationBar(title: String) {
+        self.title = title
     }
     
     func setupTitleLabel(title: String) {
-        customView?.categoryNameLabel.text = title
+        customView?.titleLabel.text = title
     }
 }
 
 extension BooksViewController: BooksViewModelDelegate {
     func success() {
         DispatchQueue.main.async {
-            self.setupNavigationBar()
-            self.setupTitleLabel(title: self.viewModel.getCategoryName)
+            self.setupNavigationBar(title: self.viewModel.getTitle)
             self.customView?.tableView.reloadData()
             Loading.shared.stop(from: self.customView ?? UIView())
         }

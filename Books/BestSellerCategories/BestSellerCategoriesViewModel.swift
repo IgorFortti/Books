@@ -33,6 +33,9 @@ class BestSellerCategoriesViewModel {
         }
     }
     
+    var getTitle: String {
+        return "Best Seller Categories"
+    }
     
     var getBestSellerCategories: [BestSellerCategory] {
         return filteredBestSellerCategories

@@ -40,7 +40,8 @@ class BestSellerCategoriesViewController: ViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.isHidden = false
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         super.viewWillAppear(animated)
     }
     
@@ -50,17 +51,15 @@ class BestSellerCategoriesViewController: ViewController {
         viewModel.delegate = self
     }
     
-    private func setupNavigationBar() {
-        title = "Best Seller Categories"
-        navigationController?.navigationBar.isHidden = false
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    private func setupNavigationBar(title: String) {
+        self.title = title
     }
 }
 
 extension BestSellerCategoriesViewController: BestSellerCategoriesViewModelDelegate {
     func success() {
         DispatchQueue.main.async {
-            self.setupNavigationBar()
+            self.setupNavigationBar(title: self.viewModel.getTitle)
             self.searchBar.isHidden = false
             self.bestSellerCategoriesTableView.reloadData()
             Loading.shared.stop(from: self.bestSellerCategoriesTableView)
