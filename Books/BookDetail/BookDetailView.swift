@@ -50,6 +50,7 @@ class BookDetailView: UIView {
         label.textColor = .black
         label.textAlignment = .right
         label.backgroundColor = .clear
+        label.numberOfLines = 0
         return label
     }()
     
@@ -193,7 +194,6 @@ class BookDetailView: UIView {
             rankContainer.topAnchor.constraint(equalTo: bookImageView.topAnchor),
             rankContainer.leadingAnchor.constraint(equalTo: bookImageView.trailingAnchor, constant: 20),
             rankContainer.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            rankContainer.bottomAnchor.constraint(equalTo: bookImageView.bottomAnchor, constant: -80),
             
             rankTitleLabel.topAnchor.constraint(equalTo: rankContainer.topAnchor, constant: 8),
             rankTitleLabel.leadingAnchor.constraint(equalTo: rankContainer.leadingAnchor, constant: 8),
@@ -215,7 +215,6 @@ class BookDetailView: UIView {
             authorTitleLabel.bottomAnchor.constraint(equalTo: authorLabel.topAnchor),
             authorTitleLabel.trailingAnchor.constraint(equalTo: authorLabel.trailingAnchor),
             
-            authorLabel.bottomAnchor.constraint(equalTo: bookImageView.bottomAnchor),
             authorLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -28),
             authorLabel.leadingAnchor.constraint(equalTo: bookImageView.trailingAnchor, constant: 18),
             
@@ -245,8 +244,25 @@ class BookDetailView: UIView {
             reviewsTableView.leadingAnchor.constraint(equalTo: descriptionContainer.leadingAnchor),
             reviewsTableView.trailingAnchor.constraint(equalTo: descriptionContainer.trailingAnchor),
         ])
-        let minHeightConstraint = descriptionContainer.heightAnchor.constraint(greaterThanOrEqualTo: descriptionLabel.heightAnchor, constant: 0)
-        minHeightConstraint.priority = .defaultLow
-        minHeightConstraint.isActive = true
+        
+        let rankContainerBottomConstraint = rankContainer.bottomAnchor.constraint(lessThanOrEqualTo: bookImageView.bottomAnchor, constant: -80)
+        rankContainerBottomConstraint.priority = .defaultLow
+        rankContainerBottomConstraint.isActive = true
+        
+        let authorTitleLabelTopConstraint = authorTitleLabel.topAnchor.constraint(greaterThanOrEqualTo: publisherLabel.bottomAnchor, constant: 10)
+        authorTitleLabelTopConstraint.priority = .defaultHigh
+        authorTitleLabelTopConstraint.isActive = true
+        
+        let authorLabelBottomConstraintMinimun = authorLabel.bottomAnchor.constraint(lessThanOrEqualTo: descriptionContainer.topAnchor, constant: -10)
+        authorLabelBottomConstraintMinimun.priority = .defaultHigh
+        authorLabelBottomConstraintMinimun.isActive = true
+        
+        let authorLabelBottomConstraintMaximum = authorLabel.bottomAnchor.constraint(greaterThanOrEqualTo: bookImageView.bottomAnchor, constant: 0)
+        authorLabelBottomConstraintMaximum.priority = .defaultLow
+        authorLabelBottomConstraintMaximum.isActive = true
+        
+        let minContainerHeightConstraint = descriptionContainer.heightAnchor.constraint(greaterThanOrEqualTo: descriptionLabel.heightAnchor, constant: 0)
+        minContainerHeightConstraint.priority = .defaultLow
+        minContainerHeightConstraint.isActive = true
     }
 }
