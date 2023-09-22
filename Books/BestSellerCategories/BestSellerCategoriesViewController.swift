@@ -28,6 +28,7 @@ class BestSellerCategoriesViewController: ViewController {
     @IBOutlet weak var bestSellerCategoriesTableView: UITableView! {
         didSet {
             bestSellerCategoriesTableView.separatorInset = .zero
+            bestSellerCategoriesTableView.showsVerticalScrollIndicator = false
             bestSellerCategoriesTableView.delegate = self
             bestSellerCategoriesTableView.dataSource = self
             bestSellerCategoriesTableView.register(BestSellerCategoryTableViewCell.nib(), forCellReuseIdentifier: BestSellerCategoryTableViewCell.identifier)

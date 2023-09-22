@@ -25,6 +25,7 @@ class BooksView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(BooksTableViewCell.self, forCellReuseIdentifier: BooksTableViewCell.identifier)
         tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
         return tableView
     }()
 
