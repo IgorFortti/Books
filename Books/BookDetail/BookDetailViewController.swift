@@ -7,8 +7,9 @@
 
 import UIKit
 import Alamofire
+import VisualKit
 
-class BookDetailViewController: ViewController {
+class BookDetailViewController: VKViewController {
     
     private let viewModel: BookDetailViewModel
     private var customView: BookDetailView?
@@ -33,7 +34,7 @@ class BookDetailViewController: ViewController {
     }
     
     private func doFetchBookReview() {
-        Loading.shared.start(from: customView ?? UIView())
+        VKLoading.shared.start(from: customView ?? UIView())
         viewModel.fetchBookReview()
         viewModel.delegate = self
     }
@@ -89,7 +90,7 @@ extension BookDetailViewController: BookDetailViewModelDelegate {
             self.setupBookImageView(imageURL: self.viewModel.getBookImageUrlString)
             self.setupDescriptionLabel(description: self.viewModel.getDescriptionBook)
             self.updateReviewsTableView()
-            Loading.shared.stop(from: self.customView ?? UIView())
+            VKLoading.shared.stop(from: self.customView ?? UIView())
         }
     }
     

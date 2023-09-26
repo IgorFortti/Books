@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import VisualKit
 
-class BooksViewController: ViewController {
+class BooksViewController: VKViewController {
     
     private let viewModel: BooksViewModel
     private var customView: BooksView?
@@ -32,7 +33,7 @@ class BooksViewController: ViewController {
     }
     
     private func doFetchBooks() {
-        Loading.shared.start(from: customView ?? UIView())
+        VKLoading.shared.start(from: customView ?? UIView())
         viewModel.fetchBooks()
         viewModel.delegate = self
     }
@@ -52,7 +53,7 @@ extension BooksViewController: BooksViewModelDelegate {
         DispatchQueue.main.async {
             self.setupNavigationBar(title: self.viewModel.getTitle)
             self.customView?.tableView.reloadData()
-            Loading.shared.stop(from: self.customView ?? UIView())
+            VKLoading.shared.stop(from: self.customView ?? UIView())
         }
     }
     

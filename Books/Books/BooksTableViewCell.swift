@@ -7,6 +7,7 @@
 
 import UIKit
 import AlamofireImage
+import VisualKit
 
 class BooksTableViewCell: UITableViewCell {
     // MARK: - Properties
@@ -24,7 +25,7 @@ class BooksTableViewCell: UITableViewCell {
     // MARK: - Initializers
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        Loading.shared.start(from: contentView, isBackground: false, isLarge: false)
+        VKLoading.shared.start(from: contentView, isBackground: false, isLarge: false)
         setupUI()
     }
     
@@ -36,7 +37,7 @@ class BooksTableViewCell: UITableViewCell {
         guard let url = URL(string: data.bookImage) else { return }
         DispatchQueue.main.async {
             self.bookImageView.af.setImage(withURL: url)
-            Loading.shared.stop(from: self.contentView)
+            VKLoading.shared.stop(from: self.contentView)
         }
     }
     

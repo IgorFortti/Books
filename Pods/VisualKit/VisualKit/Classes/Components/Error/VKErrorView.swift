@@ -1,21 +1,21 @@
 //
-//  ErrorView.swift
-//  Books
+//  VKErrorView.swift
+//  VisualKit
 //
 //  Created by Igor Fortti on 21/09/23.
 //
 
 import UIKit
 
-enum ErrorViewAction {
+public enum VKErrorViewAction {
     case tryAgain
     case cancel
 }
 
-class ErrorView: UIView {
+public class VKErrorView: UIView {
     
     private var dismissAction: (() -> Void)?
-    private var completionHandler: ((ErrorViewAction) -> Void)?
+    private var completionHandler: ((VKErrorViewAction) -> Void)?
     
     lazy var backgroundView: UIView = {
         let view = UIView()
@@ -76,7 +76,7 @@ class ErrorView: UIView {
         completionHandler?(.cancel)
     }
     
-    init(message: String, dismissAction:(() -> Void)? = nil , completionHandler: ((ErrorViewAction) -> Void)? = nil) {
+    public init(message: String, dismissAction:(() -> Void)? = nil , completionHandler: ((VKErrorViewAction) -> Void)? = nil) {
         super.init(frame: .zero)
         setupUI()
         self.dismissAction = dismissAction
@@ -88,7 +88,7 @@ class ErrorView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupUI() {
+    public func setupUI() {
         addSubviews()
         setupConstraints()
         tryAgainButton.addTarget(self, action: #selector(tryAgainButtonTapped), for: .touchUpInside)

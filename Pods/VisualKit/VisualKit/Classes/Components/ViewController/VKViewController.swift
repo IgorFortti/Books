@@ -1,25 +1,25 @@
 //
-//  ViewController.swift
-//  Books
+//  VKViewController.swift
+//  VisualKit
 //
 //  Created by Igor Fortti on 21/09/23.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+open class VKViewController: UIViewController {
 
-    override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    open override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }
     
@@ -27,8 +27,8 @@ class ViewController: UIViewController {
         dismiss(animated: false, completion: nil)
     }
     
-    func displayError(message: String) {
-        let error = ErrorView(message: message, dismissAction: dismissErrorView) { action in
+    open func displayError(message: String) {
+        let error = VKErrorView(message: message, dismissAction: dismissErrorView) { action in
             switch action {
             case .tryAgain:
                 self.viewDidLoad()

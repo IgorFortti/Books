@@ -9,5 +9,7 @@ target 'Books' do
 
 pod 'Alamofire'
 pod 'AlamofireImage'
+# pod 'VisualKit', :path => '../VisualKit/'
+pod 'VisualKit', :git => 'https://github.com/IgorFortti/VisualKit.git'
 
 end

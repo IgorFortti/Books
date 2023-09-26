@@ -2,20 +2,34 @@ PODS:
   - Alamofire (5.7.1)
   - AlamofireImage (4.2.0):
     - Alamofire (~> 5.4)
+  - VisualKit (0.1.0):
+    - VisualKit/Release (= 0.1.0)
+  - VisualKit/Release (0.1.0)
 
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
+  - VisualKit (from `https://github.com/IgorFortti/VisualKit.git`)
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - AlamofireImage
 
+EXTERNAL SOURCES:
+  VisualKit:
+    :git: https://github.com/IgorFortti/VisualKit.git
+
+CHECKOUT OPTIONS:
+  VisualKit:
+    :commit: 4ed6c1f32cdef1136b35725bdebce7269625cd65
+    :git: https://github.com/IgorFortti/VisualKit.git
+
 SPEC CHECKSUMS:
   Alamofire: 0123a34370cb170936ae79a8df46cc62b2edeb88
   AlamofireImage: 34a2d90b0e5fe6a5605f85ae4b7b01e784c60192
+  VisualKit: 5cffd13f5ff111df7e06b2a08eea2b57e3dff6f1
 
-PODFILE CHECKSUM: 96b7367be63855a48888c586037257d57bff6184
+PODFILE CHECKSUM: c9669f9a03070e8e7d32ffa386770b155fdf4b00
 
 COCOAPODS: 1.12.1

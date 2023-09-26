@@ -1,13 +1,13 @@
 //
-//  LoadingView.swift
-//  Books
+//  VKLoadingView.swift
+//  VisualKit
 //
 //  Created by Igor Fortti on 18/09/23.
 //
 
 import UIKit
 
-class LoadingView: UIView {
+class VKLoadingView: UIView {
     
     private var parrentView: UIView
     private var isBackground = true

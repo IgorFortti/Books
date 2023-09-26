@@ -1,0 +1,6 @@
+framework module VisualKit {
+  umbrella header "VisualKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

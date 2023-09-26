@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import VisualKit
 
-class BestSellerCategoriesViewController: ViewController {
+class BestSellerCategoriesViewController: VKViewController {
     
     private let viewModel: BestSellerCategoriesViewModel = BestSellerCategoriesViewModel()
     
@@ -41,7 +42,7 @@ class BestSellerCategoriesViewController: ViewController {
     }
     
     private func doFetchBestSellerCategories() {
-        Loading.shared.start(from: bestSellerCategoriesTableView, isBackground: false)
+        VKLoading.shared.start(from: bestSellerCategoriesTableView, isBackground: false)
         viewModel.fetchBestSellerCategories()
         viewModel.delegate = self
     }
@@ -58,7 +59,7 @@ extension BestSellerCategoriesViewController: BestSellerCategoriesViewModelDeleg
             self.setupNavigationBar(title: self.viewModel.getTitle)
             self.searchBar.isHidden = false
             self.bestSellerCategoriesTableView.reloadData()
-            Loading.shared.stop(from: self.bestSellerCategoriesTableView)
+            VKLoading.shared.stop(from: self.bestSellerCategoriesTableView)
         }
     }
     

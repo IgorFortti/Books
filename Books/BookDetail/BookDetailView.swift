@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import VisualKit
 
 class BookDetailView: UIView {
     
@@ -142,8 +143,8 @@ class BookDetailView: UIView {
         return label
     }()
     
-    lazy var reviewsTableView: DinamicTableView = {
-        let tableView = DinamicTableView()
+    lazy var reviewsTableView: VKDinamicTableView = {
+        let tableView = VKDinamicTableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
         tableView.clipsToBounds = true

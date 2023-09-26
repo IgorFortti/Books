@@ -1,0 +1,31 @@
+{
+  "name": "VisualKit",
+  "version": "0.1.0",
+  "summary": "A short description of VisualKit.",
+  "description": "Componentes visuais",
+  "homepage": "https://github.com/IgorFortti/VisualKit",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "IgorFortti": "igormfortti@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/IgorFortti/VisualKit.git",
+    "tag": "0.1.0"
+  },
+  "swift_versions": "5.0",
+  "platforms": {
+    "ios": "13.0"
+  },
+  "source_files": "VisualKit/Classes/**/*",
+  "default_subspecs": "Release",
+  "subspecs": [
+    {
+      "name": "Release",
+      "vendored_frameworks": "Framework/VisualKit.framework"
+    }
+  ],
+  "swift_version": "5.0"
+}
