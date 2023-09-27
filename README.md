@@ -1,6 +1,6 @@
 # Books
 
-Projeto criado para atender os requisitos solicitados no desafio do Bootcamp Santander 2023.
+Projeto criado para o desafio do Bootcamp Santander 2023.
 
 - Layout construído com o UIKIT usando view code, storyboard e XIB.
 - Genrenciador de dependência CocoaPods.
